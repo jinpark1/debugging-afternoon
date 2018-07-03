@@ -9,9 +9,13 @@ class StoreFront extends Component {
         this.props.getAllProducts();
     }
 
+    // componentWillReceiveProps(props){
+    //     console.log('storeFrontProps', props.products)
+    // }
+
     render() {
-        console.log(this.props.products);
-        let productDisplay = this.props.products.map((element, index) => {
+        console.log('storeFront', this.props.products);
+        let productDisplay = this.props.products ? this.props.products.map((element, index) => {
             return (
                 <div className="product-container" key={index}>
                     <h2>{element.title}</h2>
@@ -21,7 +25,7 @@ class StoreFront extends Component {
                     <button onClick={() => this.props.addToShoppingCart(element)}>Purchase!</button>
                 </div>
             )
-        })
+        }): null;
         return (
             <div className="storefront-container">
                 {productDisplay}
